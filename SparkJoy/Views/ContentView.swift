@@ -8,9 +8,79 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var categoryIndex = 0;
+    
+    var categories = ["Clothing", "Gaming", "School", "Work"]
+    
+    init() {
+            UITableView.appearance().backgroundColor = .white // Uses UIColor
+            UITableView.appearance().tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
+            UITableView.appearance().tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
+        }
+    
     var body: some View {
-        Text("Hello, Hack squad!")
-            .padding()
+        ScrollView{
+            VStack{
+                HStack {
+                    Text("SparkJoy")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.leading)
+                        .padding(.top)
+                    Spacer()
+                    Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
+                        Image("qr_icon")
+                            .padding(.trailing)
+                            .padding(.top)
+                    }
+                    
+                }
+                .frame(minWidth: 0,
+                       maxWidth: .infinity,
+                       minHeight: 0,
+                       maxHeight: 50,
+                       alignment: .topLeading)
+    //            NavigationView{
+    //                    Form{
+    //                        Section{
+    //
+    //                        }
+    //
+    //
+    //                    }
+    //                    .frame(minWidth: 0,
+    //                           maxWidth: .infinity,
+    //                           minHeight: 0,
+    //                           maxHeight: .infinity,
+    //                           alignment: .topLeading)
+    //                .navigationBarHidden(true)
+    //            }
+                Picker(selection: $categoryIndex, label: Text("Choose category")){
+                    ForEach(0 ..< categories.count){
+                        Text(self.categories[$0]).tag($0)
+                    }
+                }
+                ScrollView (.horizontal, showsIndicators: false){
+                    HStack{
+                        ForEach (0 ..< 5) { i in ItemCardView(title: "\(i)", description: "\(i)s description", location: "\(i)s location", value: "\(i)s value")
+                            
+                        }
+                    }
+                }
+                .frame(width: UIScreen.main.bounds.width)
+                Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
+                    Image("new_item_btn")
+                }
+                .frame(minWidth: 0,
+                       maxWidth: 300,
+                       minHeight: 0,
+                       maxHeight: 57)
+                .padding()
+            }
+        }
+        
+        
     }
 }
 

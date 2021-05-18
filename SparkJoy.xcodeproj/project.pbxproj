@@ -21,6 +21,7 @@
 		508EC06326533A3F0015B9E0 /* ObjC in Resources */ = {isa = PBXBuildFile; fileRef = 508EC06226533A3F0015B9E0 /* ObjC */; };
 		508EC06526533A5E0015B9E0 /* Swift in Resources */ = {isa = PBXBuildFile; fileRef = 508EC06426533A5E0015B9E0 /* Swift */; };
 		508EC06A26533C5B0015B9E0 /* FilesToPrint in Resources */ = {isa = PBXBuildFile; fileRef = 508EC06926533C5B0015B9E0 /* FilesToPrint */; };
+		508EC06C2653616B0015B9E0 /* ItemCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508EC06B2653616B0015B9E0 /* ItemCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,6 +55,7 @@
 		508EC06626533A8C0015B9E0 /* BRLMPrinterKit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BRLMPrinterKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		508EC06726533B640015B9E0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		508EC06926533C5B0015B9E0 /* FilesToPrint */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FilesToPrint; path = "../../../../../Desktop/BMS_SwiftUI_Sample_v4_Basic-v1.0.0.7 BETA/BMS_SwiftUI_Sample_v4_Basic/AppDataModels/FilesToPrint"; sourceTree = "<group>"; };
+		508EC06B2653616B0015B9E0 /* ItemCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				5050108C2650C70700CF3B62 /* ContentView.swift */,
+				508EC06B2653616B0015B9E0 /* ItemCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				508EC02B26532E020015B9E0 /* SupportedModels.swift in Sources */,
 				508EC05A265337FF0015B9E0 /* HardCodedSettings.swift in Sources */,
 				5050108D2650C70700CF3B62 /* ContentView.swift in Sources */,
+				508EC06C2653616B0015B9E0 /* ItemCardView.swift in Sources */,
 				508EC02226532D2E0015B9E0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
