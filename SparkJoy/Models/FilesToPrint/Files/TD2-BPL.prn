@@ -1,0 +1,65 @@
+ia
+
+^XA
+^FX NOTE: ^FX is a COMMENT used to explain what I am doing. It will not be printed. 
+^FX The "Esc i a \03" above sets the printer to Template Mode, which is also the mode used for BPL.
+^FX This code is kind of a boiler plate setup routine. Some of these settings will be overridden in the job which follows.
+^FX It is usually a good idea to send something like this just to make sure all things that might need to be initialized are set to something valid.
+^FX You are advised to find a ZPL programming reference guide to make sense of all the commands that will be used.
+^MUD
+^LS0
+^LT0
+^MD0
+^MNN
+^MFN,N
+^PON
+^PMN
+^LRN
+^MCY
+^LH0,0
+^CF0,0,0
+^CI0
+^PW448
+^FWN
+^LL400
+^XZ
+
+^XA
+^FX This is the code that actually prints the job.
+
+^FX So this same BPL file can work with BOTH TD-2120N and TD-2130N, which have different resolution, we will set units to INCHES. All fields in data below will use INCHES instead of dots.
+^MUI
+
+^FX LL sets the Label Length. It must be sent before the first FS. If you do not know how long the label will be until the end, then you should save a pointer to this and "replace the range" in your NSMutableData with the actual value when you know it.
+
+^LL4.75
+^PW2.25
+
+^CFA,0.09,0.05
+^FO0.5,0.20^FDBMS Gas Market^FS
+^FO0.5,0.40^FD11030 Circle Point Rd.^FS
+^FO0.5,0.60^FDWestminster, CO 80020^FS
+
+^FO0.25,0.80^BY0.01
+^B3N,N,0.20,Y,N
+^FD12345678^FS
+
+^FO0.25,1.20^FDMerch #:      1234567890^FS
+^FO0.25,1.40^FDApproval #:   987654^FS
+^FO0.25,1.60^FDInvoice #:    876544^FS
+^FO0.25,1.80^FDPump #19:     CREDIT^FS
+^FO0.25,2.00^FDUNL REG:      @3.259^FS
+^FO0.25,2.20^FDVOLUME:       11.345 GAL^FS
+^FO0.25,2.40^FDGAS TOTAL:    $36.97^FS
+^FO0.25,2.60^FDWASH:         $8.00^FS
+^FO0.25,2.80^FDTOTAL:        $44.97^FS
+^FO0.25,3.00^FD***************************^FS
+^FO0.25,3.20^FD******* CODE  15966 *******^FS
+^FO0.25,3.40^FD***************************^FS
+^FO0.25,3.60^FDMASTERCARD^FS
+^FO0.25,3.80^FDXXXX XXXX XXXX XXXX^FS
+^FO0.25,4.00^FDCustomer, Joe^FS
+^FO0.25,4.20^FD10/16/2013  15:59:00^FS
+^FO0.25,4.40^FDThank you for your business!^FS
+
+^XZ

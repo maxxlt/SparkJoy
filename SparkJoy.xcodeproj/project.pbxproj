@@ -7,19 +7,55 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5050108B2650C70700CF3B62 /* SparkJoyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5050108A2650C70700CF3B62 /* SparkJoyApp.swift */; };
 		5050108D2650C70700CF3B62 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5050108C2650C70700CF3B62 /* ContentView.swift */; };
 		5050108F2650C70800CF3B62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5050108E2650C70800CF3B62 /* Assets.xcassets */; };
 		505010922650C70800CF3B62 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 505010912650C70800CF3B62 /* Preview Assets.xcassets */; };
+		508EC01F26532CE70015B9E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508EC01E26532CE70015B9E0 /* AppDelegate.swift */; };
+		508EC02226532D2E0015B9E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508EC02126532D2E0015B9E0 /* SceneDelegate.swift */; };
+		508EC02626532DBE0015B9E0 /* BrotherPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508EC02526532DBE0015B9E0 /* BrotherPrinter.swift */; };
+		508EC02B26532E020015B9E0 /* SupportedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508EC02A26532E020015B9E0 /* SupportedModels.swift */; };
+		508EC052265335BA0015B9E0 /* BRLMPrinterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 508EC051265335BA0015B9E0 /* BRLMPrinterKit.framework */; };
+		508EC053265335BA0015B9E0 /* BRLMPrinterKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 508EC051265335BA0015B9E0 /* BRLMPrinterKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		508EC059265337FF0015B9E0 /* RJ+TD Paper BIN files in Resources */ = {isa = PBXBuildFile; fileRef = 508EC057265337FF0015B9E0 /* RJ+TD Paper BIN files */; };
+		508EC05A265337FF0015B9E0 /* HardCodedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508EC058265337FF0015B9E0 /* HardCodedSettings.swift */; };
+		508EC06326533A3F0015B9E0 /* ObjC in Resources */ = {isa = PBXBuildFile; fileRef = 508EC06226533A3F0015B9E0 /* ObjC */; };
+		508EC06526533A5E0015B9E0 /* Swift in Resources */ = {isa = PBXBuildFile; fileRef = 508EC06426533A5E0015B9E0 /* Swift */; };
+		508EC06A26533C5B0015B9E0 /* FilesToPrint in Resources */ = {isa = PBXBuildFile; fileRef = 508EC06926533C5B0015B9E0 /* FilesToPrint */; };
+		508EC06C2653616B0015B9E0 /* ItemCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508EC06B2653616B0015B9E0 /* ItemCardView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		508EC04E265334AA0015B9E0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				508EC053265335BA0015B9E0 /* BRLMPrinterKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		505010872650C70700CF3B62 /* SparkJoy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SparkJoy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5050108A2650C70700CF3B62 /* SparkJoyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkJoyApp.swift; sourceTree = "<group>"; };
 		5050108C2650C70700CF3B62 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5050108E2650C70800CF3B62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		505010912650C70800CF3B62 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		505010932650C70800CF3B62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		508EC01E26532CE70015B9E0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../../../../Desktop/BMS_SwiftUI_Sample_v4_Basic-v1.0.0.7 BETA/BMS_SwiftUI_Sample_v4_Basic/AppDelegate.swift"; sourceTree = "<group>"; };
+		508EC02126532D2E0015B9E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = "../../../../Desktop/BMS_SwiftUI_Sample_v4_Basic-v1.0.0.7 BETA/BMS_SwiftUI_Sample_v4_Basic/SceneDelegate.swift"; sourceTree = "<group>"; };
+		508EC02526532DBE0015B9E0 /* BrotherPrinter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BrotherPrinter.swift; path = "../../../../../Desktop/BMS_SwiftUI_Sample_v4_Basic-v1.0.0.7 BETA/BMS_SwiftUI_Sample_v4_Basic/AppDataModels/BrotherPrinter.swift"; sourceTree = "<group>"; };
+		508EC02A26532E020015B9E0 /* SupportedModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupportedModels.swift; path = "../../../../../Desktop/BMS_SwiftUI_Sample_v4_Basic-v1.0.0.7 BETA/BMS_SwiftUI_Sample_v4_Basic/AppDataModels/SupportedModels.swift"; sourceTree = "<group>"; };
+		508EC051265335BA0015B9E0 /* BRLMPrinterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BRLMPrinterKit.framework; path = SparkJoy/Frameworks/BRLMPrinterKit.framework; sourceTree = "<group>"; };
+		508EC057265337FF0015B9E0 /* RJ+TD Paper BIN files */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "RJ+TD Paper BIN files"; path = "../../../../../Desktop/BMS_SwiftUI_Sample_v4_Basic-v1.0.0.7 BETA/BMS_SwiftUI_Sample_v4_Basic/PrinterSetup/RJ+TD Paper BIN files"; sourceTree = "<group>"; };
+		508EC058265337FF0015B9E0 /* HardCodedSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HardCodedSettings.swift; path = "../../../../../Desktop/BMS_SwiftUI_Sample_v4_Basic-v1.0.0.7 BETA/BMS_SwiftUI_Sample_v4_Basic/PrinterSetup/HardCodedSettings.swift"; sourceTree = "<group>"; };
+		508EC06226533A3F0015B9E0 /* ObjC */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ObjC; sourceTree = "<group>"; };
+		508EC06426533A5E0015B9E0 /* Swift */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Swift; sourceTree = "<group>"; };
+		508EC06626533A8C0015B9E0 /* BRLMPrinterKit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BRLMPrinterKit-Bridging-Header.h"; sourceTree = "<group>"; };
+		508EC06726533B640015B9E0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		508EC06926533C5B0015B9E0 /* FilesToPrint */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FilesToPrint; path = "../../../../../Desktop/BMS_SwiftUI_Sample_v4_Basic-v1.0.0.7 BETA/BMS_SwiftUI_Sample_v4_Basic/AppDataModels/FilesToPrint"; sourceTree = "<group>"; };
+		508EC06B2653616B0015B9E0 /* ItemCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				508EC052265335BA0015B9E0 /* BRLMPrinterKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +75,7 @@
 			children = (
 				505010892650C70700CF3B62 /* SparkJoy */,
 				505010882650C70700CF3B62 /* Products */,
+				508EC04B265334AA0015B9E0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,10 +90,15 @@
 		505010892650C70700CF3B62 /* SparkJoy */ = {
 			isa = PBXGroup;
 			children = (
-				5050108A2650C70700CF3B62 /* SparkJoyApp.swift */,
-				5050108C2650C70700CF3B62 /* ContentView.swift */,
+				508EC05D2653381D0015B9E0 /* Printing */,
+				508EC056265337F30015B9E0 /* PrinterSetup */,
+				508EC02426532DB00015B9E0 /* Models */,
+				508EC01E26532CE70015B9E0 /* AppDelegate.swift */,
+				508EC02126532D2E0015B9E0 /* SceneDelegate.swift */,
+				508EC01C26532A5B0015B9E0 /* Views */,
 				5050108E2650C70800CF3B62 /* Assets.xcassets */,
-				505010932650C70800CF3B62 /* Info.plist */,
+				508EC06726533B640015B9E0 /* Info.plist */,
+				508EC06626533A8C0015B9E0 /* BRLMPrinterKit-Bridging-Header.h */,
 				505010902650C70800CF3B62 /* Preview Content */,
 			);
 			path = SparkJoy;
@@ -69,6 +112,51 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		508EC01C26532A5B0015B9E0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5050108C2650C70700CF3B62 /* ContentView.swift */,
+				508EC06B2653616B0015B9E0 /* ItemCardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		508EC02426532DB00015B9E0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				508EC06926533C5B0015B9E0 /* FilesToPrint */,
+				508EC02A26532E020015B9E0 /* SupportedModels.swift */,
+				508EC02526532DBE0015B9E0 /* BrotherPrinter.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		508EC04B265334AA0015B9E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				508EC051265335BA0015B9E0 /* BRLMPrinterKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		508EC056265337F30015B9E0 /* PrinterSetup */ = {
+			isa = PBXGroup;
+			children = (
+				508EC058265337FF0015B9E0 /* HardCodedSettings.swift */,
+				508EC057265337FF0015B9E0 /* RJ+TD Paper BIN files */,
+			);
+			path = PrinterSetup;
+			sourceTree = "<group>";
+		};
+		508EC05D2653381D0015B9E0 /* Printing */ = {
+			isa = PBXGroup;
+			children = (
+				508EC06426533A5E0015B9E0 /* Swift */,
+				508EC06226533A3F0015B9E0 /* ObjC */,
+			);
+			path = Printing;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -79,6 +167,7 @@
 				505010832650C70700CF3B62 /* Sources */,
 				505010842650C70700CF3B62 /* Frameworks */,
 				505010852650C70700CF3B62 /* Resources */,
+				508EC04E265334AA0015B9E0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,6 +215,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				508EC06526533A5E0015B9E0 /* Swift in Resources */,
+				508EC06A26533C5B0015B9E0 /* FilesToPrint in Resources */,
+				508EC059265337FF0015B9E0 /* RJ+TD Paper BIN files in Resources */,
+				508EC06326533A3F0015B9E0 /* ObjC in Resources */,
 				505010922650C70800CF3B62 /* Preview Assets.xcassets in Resources */,
 				5050108F2650C70800CF3B62 /* Assets.xcassets in Resources */,
 			);
@@ -138,8 +231,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				508EC01F26532CE70015B9E0 /* AppDelegate.swift in Sources */,
+				508EC02626532DBE0015B9E0 /* BrotherPrinter.swift in Sources */,
+				508EC02B26532E020015B9E0 /* SupportedModels.swift in Sources */,
+				508EC05A265337FF0015B9E0 /* HardCodedSettings.swift in Sources */,
 				5050108D2650C70700CF3B62 /* ContentView.swift in Sources */,
-				5050108B2650C70700CF3B62 /* SparkJoyApp.swift in Sources */,
+				508EC06C2653616B0015B9E0 /* ItemCardView.swift in Sources */,
+				508EC02226532D2E0015B9E0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +368,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SparkJoy/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SparkJoy",
+					"$(PROJECT_DIR)/SparkJoy/Frameworks",
+				);
 				INFOPLIST_FILE = SparkJoy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -278,8 +381,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.clingstone.SparkJoy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/max/Documents/GitHub/SparkJoy/SparkJoy/BRLMPrinterKit-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Debug;
 		};
@@ -291,6 +396,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SparkJoy/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SparkJoy",
+					"$(PROJECT_DIR)/SparkJoy/Frameworks",
+				);
 				INFOPLIST_FILE = SparkJoy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -299,8 +409,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.clingstone.SparkJoy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/max/Documents/GitHub/SparkJoy/SparkJoy/BRLMPrinterKit-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Release;
 		};

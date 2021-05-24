@@ -1,0 +1,103 @@
+ia
+
+^XA
+^FX NOTE1: ^FX is a COMMENT used to explain what I am doing. It will not be printed. 
+^FX NOTE2: Contact Technical Support if you have any questions about the BPL Programming Language used
+in this sample.
+^FX NOTE3: The "Esc i a 0x03" at the beginning of this file sets the printer's Command Mode to Template Mode, which is also the mode used for BPL. This command is REQUIRED if the printer is not already configured to boot into this Command Mode. It is recommended to send this command anyway, just to be safe.
+^FX NOTE4: This first block of code is a boiler plate setup routine. Some of these settings may be overridden in the job which follows. It is usually a good idea to send something like this just to make sure all things that might need to be initialized are set to something valid.
+^MUD
+^LS0
+^LT0
+^MD0
+^MNN
+^MFN,N
+^PON 
+^PMN
+^LRN
+^MCY
+^LH0,0
+^CF0,0,0
+^CI0
+^PW812
+^FWN
+^LL400
+^XZ
+
+^XA
+^FX This is the code that actually prints the job.
+
+^FX IMPORTANT NOTE: This job is optimized for Firmware 1.20 and FontVer1.05. It produces different output compared to FW1.09 and FontVer1.03. Please be sure your printer has the latest Firmware and Font version when you are designing your BPL forms.
+
+^FX LL sets the Label Length. It must be sent before the first FS. If you do not know how long the label will be until the end, then you should save a pointer to this and "replace the range" in your NSMutableData with the actual value when you know it.
+
+^LL1700
+
+^CF0,40,40
+^FO287,5^FDCustomer Invoice^FS
+^FO275,0^GB300,50,2^FS
+
+^CF0,80,80
+^FO50,100^FDBMS^FS
+
+^CF0,26,28
+^FO50,220^FDJoe Smith^FS
+^FO50,245^FDBrother Mobile Solutions^FS
+^FO50,270^FD11030 Circle Point Rd.^FS
+^FO50,295^FDWestminster, CO 80020^FS
+^FO50,320^FDTel: 800.543.6144^FS
+
+^FO450,120^FD10/16/2013  8:20 AM^FS
+^FO450,220^FDDelivered to:^FS
+^FO480,245^FDA&B Wholesale Corp.^FS
+^FO480,270^FD1234 N. Main St.^FS
+^FO480,295^FDAnywhere, USA 12345^FS
+^FO480,320^FDTel: 800-555-5555^FS
+^FO480,345^FDAccount No. 12345-010^FS
+^FO480,370^FDJob# 123456789^FS
+
+^FX NOTE: The <caret>A command temporarily changes the font for the next FD command. Afterwards the font will return to the previous <caret>CF command setting.
+^FO20,450^GB780,2,2^FS
+^FO50,455^A0N,70,100^FDDescription^FS
+^FO20,530^GB780,2,2^FS
+
+^FX NOTE: Using FB here to define a Field Block, which automatically wraps at the block boundary. The FD command which follows contains the data inside the block.
+
+^FO25,550^FB780,20,,
+
+^FDThis is a real time delivery invoice that is popular in field delivery and distribution systems. The delivery person performs the transaction over the mobile data network and then prints and presents the invoice on site to the recipient of the goods. Systems like this are great benefit to delivery/distribution companies because they prevent costly mistakes and shorten the payment cycle.
+^FS
+
+^FX Print a Code 39 barcode inside the FB as an example, since there is extra white space available with the current product description.
+^FO150,900^BY3
+^B3N,N,100,N
+^FD8675309^FS
+
+
+^FO20,1050^GB780,2,2^FS
+
+^FO50,1100^FDOrder Breakdown:^FS
+^FO75,1125^FDTotal Units - 195 Cases^FS
+^FO75,1150^FDDiscounted Units - 150 Cases^FS
+^FO75,1175^FDNet Total Invoice - $1720.00^FS
+^FO75,1225^FDPayment Terms - Net 30 Days^FS
+
+^FO50,1275^FDRemit Payment to:^FS
+^FO75,1300^FDJoe Smith^FS
+^FO75,1325^FDBrother Mobile Solutions^FS
+^FO75,1350^FD11030 Circle Point Rd.^FS
+^FO75,1375^FDWestminster, CO 80020^FS
+^FO75,1400^FDTel: 800.543.6144^FS
+^FO75,1425^FDAttn: Accounts Receivable^FS
+
+^FXThis shows how you may Center Justify these 2 line items using FB, with a temporarily larger font
+^FO25,1470^FB780,2,,C
+^A0N,40,50^FDBMS\&Thank you for your business^FS
+
+^FO20,1550^GB780,2,2^FS
+
+^FO30,1570^A0N,25,25^FDSign on the line below and return with your payment:^FS
+
+^FO20,1670^GB780,2,2^FS
+
+^XZ
