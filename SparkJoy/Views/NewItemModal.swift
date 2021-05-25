@@ -16,6 +16,7 @@ struct NewItemModal: View {
     @State var location: String = ""
     @State var value: String = ""
     @State private var categoryIndex = 0;
+    @State private var showAlert = false;
     var categories = ["Clothing", "Gaming", "School", "Work"]
     
     var body: some View {
@@ -53,9 +54,22 @@ struct NewItemModal: View {
                     }
                 }
                 Section {
-                    Button(action: {self.showModal.toggle(); print("Untoggled")}, label: {
+                    Button(action:
+                            {
+                                if (title.isEmpty || desc.isEmpty || value.isEmpty || location.isEmpty){
+                                    showAlert.toggle()
+                                }
+                                else {
+                                    self.showModal.toggle();
+                                    print("Untoggled");
+                                }
+                            },
+                           label: {
                         Image("add_item_btn")
                     })
+                        .alert(isPresented: $showAlert){
+                            Alert(title: Text("Wrong input"), message: Text("Please fill out all the info"), dismissButton: .default(Text("Try again")))
+                        }
                 }
             }
             .padding(24)
