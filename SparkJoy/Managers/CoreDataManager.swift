@@ -33,4 +33,22 @@ class CoreDataManager:ObservableObject {
             print("Failed to save movie \(error)")
         }
     }
+    
+    func getAllItems() -> [Item] {
+        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+        do {
+            return try persistentContainer.viewContext.fetch(fetchRequest)
+        } catch {
+            return []
+        }
+    }
+    func getItemByCategory(category: Int16) -> [Item] {
+        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "category == %@", String(category))
+        do {
+            return try persistentContainer.viewContext.fetch(fetchRequest)
+        } catch {
+            return []
+        }
+    }
 }

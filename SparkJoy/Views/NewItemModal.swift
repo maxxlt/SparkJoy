@@ -61,7 +61,7 @@ struct NewItemModal: View {
                                 }
                                 else {
                                     self.showModal.toggle();
-                                    print("Untoggled");
+                                    coreDM.saveItem(title: self.title, desc: self.desc, location: self.location, value: Float(value) ?? 0.00, category: Int16(categoryIndex))
                                 }
                             },
                            label: {
