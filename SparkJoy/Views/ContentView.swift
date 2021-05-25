@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    @EnvironmentObject var coreDM:CoreDataManager
     @State private var categoryIndex = 0;
     
     var categories = ["Clothing", "Gaming", "School", "Work"]
@@ -41,21 +41,6 @@ struct ContentView: View {
                        minHeight: 0,
                        maxHeight: 50,
                        alignment: .topLeading)
-    //            NavigationView{
-    //                    Form{
-    //                        Section{
-    //
-    //                        }
-    //
-    //
-    //                    }
-    //                    .frame(minWidth: 0,
-    //                           maxWidth: .infinity,
-    //                           minHeight: 0,
-    //                           maxHeight: .infinity,
-    //                           alignment: .topLeading)
-    //                .navigationBarHidden(true)
-    //            }
                 Picker(selection: $categoryIndex, label: Text("Choose category")){
                     ForEach(0 ..< categories.count){
                         Text(self.categories[$0]).tag($0)
