@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var coreDM:CoreDataManager
     @State private var categoryIndex = 0;
-    
+    @State private var showModal = false;
     var categories = ["Clothing", "Gaming", "School", "Work"]
     
     init() {
@@ -54,8 +54,12 @@ struct ContentView: View {
                     }
                 }
                 .frame(width: UIScreen.main.bounds.width)
-                Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
+                Button(action: {self.showModal.toggle(); print("Toggled")}, label: {
                     Image("new_item_btn")
+                })
+                .sheet(isPresented: $showModal){
+                    
+                    NewItemModal(showModal: self.$showModal)
                 }
                 .frame(minWidth: 0,
                        maxWidth: 300,
