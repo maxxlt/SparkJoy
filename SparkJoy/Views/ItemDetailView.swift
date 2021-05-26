@@ -88,7 +88,7 @@ struct ItemDetailView: View {
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity, alignment: .topLeading)
             VStack {
-                Image(uiImage: generateQRCode(from: "Jomama"))
+                Image(uiImage: generateQRCode(from: "\(self.uid)"))
                     .interpolation(.none)
                     .resizable()
                     .scaledToFit()
