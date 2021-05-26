@@ -25,6 +25,7 @@
 		50F0EA37265D4ACC00587612 /* ItemModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50F0EA35265D4ACC00587612 /* ItemModel.xcdatamodeld */; };
 		50F0EA3A265D51A400587612 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F0EA39265D51A400587612 /* CoreDataManager.swift */; };
 		50F0EA42265D736700587612 /* NewItemModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F0EA41265D736700587612 /* NewItemModal.swift */; };
+		50F0EA4B265DC17100587612 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F0EA4A265DC17100587612 /* ItemDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,6 +63,7 @@
 		50F0EA36265D4ACC00587612 /* ItemModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ItemModel.xcdatamodel; sourceTree = "<group>"; };
 		50F0EA39265D51A400587612 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		50F0EA41265D736700587612 /* NewItemModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemModal.swift; sourceTree = "<group>"; };
+		50F0EA4A265DC17100587612 /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				5050108C2650C70700CF3B62 /* ContentView.swift */,
 				508EC06B2653616B0015B9E0 /* ItemCardView.swift */,
 				50F0EA41265D736700587612 /* NewItemModal.swift */,
+				50F0EA4A265DC17100587612 /* ItemDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				508EC01F26532CE70015B9E0 /* AppDelegate.swift in Sources */,
 				508EC02626532DBE0015B9E0 /* BrotherPrinter.swift in Sources */,
 				508EC02B26532E020015B9E0 /* SupportedModels.swift in Sources */,
+				50F0EA4B265DC17100587612 /* ItemDetailView.swift in Sources */,
 				508EC05A265337FF0015B9E0 /* HardCodedSettings.swift in Sources */,
 				50F0EA42265D736700587612 /* NewItemModal.swift in Sources */,
 				5050108D2650C70700CF3B62 /* ContentView.swift in Sources */,
