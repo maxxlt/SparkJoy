@@ -56,17 +56,14 @@ struct ContentView: View {
                     
                     ScrollView (.horizontal, showsIndicators: false){
                         HStack{
-                            ForEach (0 ..< items.count, id: \.self) { i in
+                            ForEach (items, id: \.self) { item in
                                 NavigationLink(
-                                    destination: ItemDetailView(title: "\(items[i].title ?? "")",
-                                                                description: "\(items[i].desc ?? "")",
-                                                                location: "\(items[i].location ?? "")",
-                                                                value: "\(items[i].value)"), label: {
+                                    destination: ItemDetailView(item: item), label: {
                                                                     ItemCardView(
-                                                                        title: "\(items[i].title ?? "")",
-                                                                        description: "\(items[i].desc ?? "")",
-                                                                        location: "\(items[i].location ?? "")",
-                                                                        value: "\(items[i].value)")
+                                                                        title: "\(item.title ?? "")",
+                                                                        description: "\(item.desc ?? "")",
+                                                                        location: "\(item.location ?? "")",
+                                                                        value: "\(item.value)")
                                                                 })
                                 
                             }

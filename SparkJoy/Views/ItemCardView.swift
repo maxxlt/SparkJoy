@@ -68,7 +68,7 @@ struct ItemCardView: View {
                 
                 
             }.frame(width: 300, height: 400, alignment: .topLeading)
-        
+
         }
     }
 }
