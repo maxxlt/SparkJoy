@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    @EnvironmentObject var coreDM:CoreDataManager
     @State private var categoryIndex = 0;
-    
+    @State private var showModal = false;
+    @State private var items: [Item] = [Item]()
     var categories = ["Clothing", "Gaming", "School", "Work"]
     
     init() {
@@ -41,36 +42,42 @@ struct ContentView: View {
                        minHeight: 0,
                        maxHeight: 50,
                        alignment: .topLeading)
-    //            NavigationView{
-    //                    Form{
-    //                        Section{
-    //
-    //                        }
-    //
-    //
-    //                    }
-    //                    .frame(minWidth: 0,
-    //                           maxWidth: .infinity,
-    //                           minHeight: 0,
-    //                           maxHeight: .infinity,
-    //                           alignment: .topLeading)
-    //                .navigationBarHidden(true)
-    //            }
+                .onAppear(perform: {
+                    items = coreDM.getItemByCategory(category: Int16(categoryIndex))
+                })
                 Picker(selection: $categoryIndex, label: Text("Choose category")){
                     ForEach(0 ..< categories.count){
                         Text(self.categories[$0]).tag($0)
                     }
                 }
+                .onChange(of: categoryIndex) { (index) in
+                    print("Index: \(index)")
+                    items = coreDM.getItemByCategory(category: Int16(index))
+                }
+                
                 ScrollView (.horizontal, showsIndicators: false){
                     HStack{
-                        ForEach (0 ..< 5) { i in ItemCardView(title: "\(i)", description: "\(i)s description", location: "\(i)s location", value: "\(i)s value")
-                            
+                        ForEach (0 ..< items.count, id: \.self) { i in
+                            ItemCardView(
+                                title: "\(items[i].title ?? "")",
+                                description: "\(items[i].desc ?? "")",
+                                location: "\(items[i].location ?? "")",
+                                value: "\(items[i].value)")
                         }
                     }
                 }
                 .frame(width: UIScreen.main.bounds.width)
-                Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
+                Button(action:
+                        {
+                            self.showModal.toggle();
+                            
+                        },
+                       label: {
                     Image("new_item_btn")
+                })
+                .sheet(isPresented: $showModal){
+                    
+                    NewItemModal(showModal: self.$showModal)
                 }
                 .frame(minWidth: 0,
                        maxWidth: 300,
@@ -79,6 +86,7 @@ struct ContentView: View {
                 .padding()
             }
         }
+        
         
         
     }

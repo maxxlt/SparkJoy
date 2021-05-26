@@ -22,6 +22,9 @@
 		508EC06526533A5E0015B9E0 /* Swift in Resources */ = {isa = PBXBuildFile; fileRef = 508EC06426533A5E0015B9E0 /* Swift */; };
 		508EC06A26533C5B0015B9E0 /* FilesToPrint in Resources */ = {isa = PBXBuildFile; fileRef = 508EC06926533C5B0015B9E0 /* FilesToPrint */; };
 		508EC06C2653616B0015B9E0 /* ItemCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508EC06B2653616B0015B9E0 /* ItemCardView.swift */; };
+		50F0EA37265D4ACC00587612 /* ItemModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50F0EA35265D4ACC00587612 /* ItemModel.xcdatamodeld */; };
+		50F0EA3A265D51A400587612 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F0EA39265D51A400587612 /* CoreDataManager.swift */; };
+		50F0EA42265D736700587612 /* NewItemModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F0EA41265D736700587612 /* NewItemModal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,6 +59,9 @@
 		508EC06726533B640015B9E0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		508EC06926533C5B0015B9E0 /* FilesToPrint */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FilesToPrint; path = "../../../../../Desktop/BMS_SwiftUI_Sample_v4_Basic-v1.0.0.7 BETA/BMS_SwiftUI_Sample_v4_Basic/AppDataModels/FilesToPrint"; sourceTree = "<group>"; };
 		508EC06B2653616B0015B9E0 /* ItemCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardView.swift; sourceTree = "<group>"; };
+		50F0EA36265D4ACC00587612 /* ItemModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ItemModel.xcdatamodel; sourceTree = "<group>"; };
+		50F0EA39265D51A400587612 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		50F0EA41265D736700587612 /* NewItemModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemModal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,7 @@
 		505010892650C70700CF3B62 /* SparkJoy */ = {
 			isa = PBXGroup;
 			children = (
+				50F0EA38265D518C00587612 /* Managers */,
 				508EC05D2653381D0015B9E0 /* Printing */,
 				508EC056265337F30015B9E0 /* PrinterSetup */,
 				508EC02426532DB00015B9E0 /* Models */,
@@ -100,6 +107,7 @@
 				508EC06726533B640015B9E0 /* Info.plist */,
 				508EC06626533A8C0015B9E0 /* BRLMPrinterKit-Bridging-Header.h */,
 				505010902650C70800CF3B62 /* Preview Content */,
+				50F0EA35265D4ACC00587612 /* ItemModel.xcdatamodeld */,
 			);
 			path = SparkJoy;
 			sourceTree = "<group>";
@@ -117,6 +125,7 @@
 			children = (
 				5050108C2650C70700CF3B62 /* ContentView.swift */,
 				508EC06B2653616B0015B9E0 /* ItemCardView.swift */,
+				50F0EA41265D736700587612 /* NewItemModal.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -155,6 +164,14 @@
 				508EC06226533A3F0015B9E0 /* ObjC */,
 			);
 			path = Printing;
+			sourceTree = "<group>";
+		};
+		50F0EA38265D518C00587612 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				50F0EA39265D51A400587612 /* CoreDataManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,8 +252,11 @@
 				508EC02626532DBE0015B9E0 /* BrotherPrinter.swift in Sources */,
 				508EC02B26532E020015B9E0 /* SupportedModels.swift in Sources */,
 				508EC05A265337FF0015B9E0 /* HardCodedSettings.swift in Sources */,
+				50F0EA42265D736700587612 /* NewItemModal.swift in Sources */,
 				5050108D2650C70700CF3B62 /* ContentView.swift in Sources */,
 				508EC06C2653616B0015B9E0 /* ItemCardView.swift in Sources */,
+				50F0EA3A265D51A400587612 /* CoreDataManager.swift in Sources */,
+				50F0EA37265D4ACC00587612 /* ItemModel.xcdatamodeld in Sources */,
 				508EC02226532D2E0015B9E0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +458,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		50F0EA35265D4ACC00587612 /* ItemModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				50F0EA36265D4ACC00587612 /* ItemModel.xcdatamodel */,
+			);
+			currentVersion = 50F0EA36265D4ACC00587612 /* ItemModel.xcdatamodel */;
+			path = ItemModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5050107F2650C70700CF3B62 /* Project object */;
 }
