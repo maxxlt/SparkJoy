@@ -23,6 +23,8 @@
 		508EC06A26533C5B0015B9E0 /* FilesToPrint in Resources */ = {isa = PBXBuildFile; fileRef = 508EC06926533C5B0015B9E0 /* FilesToPrint */; };
 		508EC06C2653616B0015B9E0 /* ItemCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508EC06B2653616B0015B9E0 /* ItemCardView.swift */; };
 		50B96F13265EA34F0064F15A /* PrintQRModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B96F12265EA34F0064F15A /* PrintQRModal.swift */; };
+		50B96F15265EB8740064F15A /* ChecklistRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B96F14265EB8740064F15A /* ChecklistRow.swift */; };
+		50B96F18265EB95F0064F15A /* SearchWIFIPrinters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B96F17265EB95F0064F15A /* SearchWIFIPrinters.swift */; };
 		50F0EA37265D4ACC00587612 /* ItemModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50F0EA35265D4ACC00587612 /* ItemModel.xcdatamodeld */; };
 		50F0EA3A265D51A400587612 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F0EA39265D51A400587612 /* CoreDataManager.swift */; };
 		50F0EA42265D736700587612 /* NewItemModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F0EA41265D736700587612 /* NewItemModal.swift */; };
@@ -62,6 +64,8 @@
 		508EC06926533C5B0015B9E0 /* FilesToPrint */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FilesToPrint; path = "../../../../../Desktop/BMS_SwiftUI_Sample_v4_Basic-v1.0.0.7 BETA/BMS_SwiftUI_Sample_v4_Basic/AppDataModels/FilesToPrint"; sourceTree = "<group>"; };
 		508EC06B2653616B0015B9E0 /* ItemCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCardView.swift; sourceTree = "<group>"; };
 		50B96F12265EA34F0064F15A /* PrintQRModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintQRModal.swift; sourceTree = "<group>"; };
+		50B96F14265EB8740064F15A /* ChecklistRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistRow.swift; sourceTree = "<group>"; };
+		50B96F17265EB95F0064F15A /* SearchWIFIPrinters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchWIFIPrinters.swift; sourceTree = "<group>"; };
 		50F0EA36265D4ACC00587612 /* ItemModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ItemModel.xcdatamodel; sourceTree = "<group>"; };
 		50F0EA39265D51A400587612 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		50F0EA41265D736700587612 /* NewItemModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemModal.swift; sourceTree = "<group>"; };
@@ -127,11 +131,11 @@
 		508EC01C26532A5B0015B9E0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				50B96F16265EB93D0064F15A /* PrintQR */,
 				5050108C2650C70700CF3B62 /* ContentView.swift */,
 				508EC06B2653616B0015B9E0 /* ItemCardView.swift */,
 				50F0EA41265D736700587612 /* NewItemModal.swift */,
 				50F0EA4A265DC17100587612 /* ItemDetailView.swift */,
-				50B96F12265EA34F0064F15A /* PrintQRModal.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -170,6 +174,16 @@
 				508EC06226533A3F0015B9E0 /* ObjC */,
 			);
 			path = Printing;
+			sourceTree = "<group>";
+		};
+		50B96F16265EB93D0064F15A /* PrintQR */ = {
+			isa = PBXGroup;
+			children = (
+				50B96F14265EB8740064F15A /* ChecklistRow.swift */,
+				50B96F17265EB95F0064F15A /* SearchWIFIPrinters.swift */,
+				50B96F12265EA34F0064F15A /* PrintQRModal.swift */,
+			);
+			path = PrintQR;
 			sourceTree = "<group>";
 		};
 		50F0EA38265D518C00587612 /* Managers */ = {
@@ -261,11 +275,13 @@
 				50F0EA4B265DC17100587612 /* ItemDetailView.swift in Sources */,
 				508EC05A265337FF0015B9E0 /* HardCodedSettings.swift in Sources */,
 				50F0EA42265D736700587612 /* NewItemModal.swift in Sources */,
+				50B96F15265EB8740064F15A /* ChecklistRow.swift in Sources */,
 				5050108D2650C70700CF3B62 /* ContentView.swift in Sources */,
 				508EC06C2653616B0015B9E0 /* ItemCardView.swift in Sources */,
 				50F0EA3A265D51A400587612 /* CoreDataManager.swift in Sources */,
 				50F0EA37265D4ACC00587612 /* ItemModel.xcdatamodeld in Sources */,
 				508EC02226532D2E0015B9E0 /* SceneDelegate.swift in Sources */,
+				50B96F18265EB95F0064F15A /* SearchWIFIPrinters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

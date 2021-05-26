@@ -18,6 +18,7 @@ struct ItemDetailView: View {
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
     @State private var showModal = false;
+    @State var wifiIPAddress:String = "Not Used"
     
     init(item: Item){
         self.uid = item.uid ?? ""
@@ -100,7 +101,8 @@ struct ItemDetailView: View {
                     Text("Print QR")
                 })
                 .sheet(isPresented: $showModal){
-                    PrintQRModal(showModal: self.$showModal)
+                    PrintQRModal(showModal: self.$showModal, printersToSearch: SupportedModels.getArrayOfAllSupportedWIFIModels(),doSearchOnAppear: true,
+                                 wifiIPAddress: $wifiIPAddress)
                 }
             }
             .frame(minWidth: 0, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 224, maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .center)
