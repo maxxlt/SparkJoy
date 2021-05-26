@@ -24,26 +24,6 @@ struct ContentView: View {
         NavigationView{
             ScrollView{
                 VStack{
-                    //                    HStack {
-                    //                        Text("SparkJoy")
-                    //                            .font(.largeTitle)
-                    //                            .fontWeight(.bold)
-                    //                            .padding(.leading)
-                    //                            .padding(.top)
-                    //                        Spacer()
-                    //                        Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
-                    //                            Image("qr_icon")
-                    //                                .padding(.trailing)
-                    //                                .padding(.top)
-                    //                        }
-                    //
-                    //                    }
-                    //                    .frame(minWidth: 0,
-                    //                           maxWidth: .infinity,
-                    //                           minHeight: 0,
-                    //                           maxHeight: 50,
-                    //                           alignment: .topLeading)
-                    
                     Picker(selection: $categoryIndex, label: Text("Choose category")){
                         ForEach(0 ..< categories.count){
                             Text(self.categories[$0]).tag($0)
