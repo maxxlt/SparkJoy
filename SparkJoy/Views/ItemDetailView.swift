@@ -101,7 +101,7 @@ struct ItemDetailView: View {
                     Text("Print QR")
                 })
                 .sheet(isPresented: $showModal){
-                    PrintQRModal(showModal: self.$showModal, printersToSearch: SupportedModels.getArrayOfAllSupportedWIFIModels(),doSearchOnAppear: true,
+                    PrintQRModal(showModal: self.$showModal, uid: self.uid, printersToSearch: SupportedModels.getArrayOfAllSupportedWIFIModels(),doSearchOnAppear: true,
                                  wifiIPAddress: $wifiIPAddress)
                 }
             }

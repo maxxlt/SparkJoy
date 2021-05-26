@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import CoreImage.CIFilterBuiltins
 
 struct PrintQRModal: View {
     @EnvironmentObject var brotherPrinter:BrotherPrinter
+    @EnvironmentObject var appSettings:AppSettings
     @Binding var showModal: Bool
+    var uid: String
     var printersToSearch:[String]
     var doSearchOnAppear:Bool // caller decides this. For now, from PrinterSearchTopView->true, from WIFIChannelView->false.
     @Binding var wifiIPAddress:String
@@ -19,7 +22,11 @@ struct PrintQRModal: View {
     @State var infoText:String = ""
     @State var isSearching:Bool = false
     @State private var showAlert = false;
-    
+    @State private var showPrintErrorAlert:Bool = false
+    @State private var printErrorAlertMessage:String? = nil
+    @State private var printingInProgress:Bool = false
+    let context = CIContext()
+    let filter = CIFilter.qrCodeGenerator()
     let printerSearch = SearchWIFIPrinters()
     
     var body: some View {
@@ -53,7 +60,7 @@ struct PrintQRModal: View {
              }
             Button(action:
                     {
-                        
+                        handlePrintQR(uid: uid)
                     },
                    label: {
                 Image("print_qr_btn")
@@ -87,6 +94,11 @@ struct PrintQRModal: View {
         }
     } //handleRowTap
     
+    func handlePrintQR(uid:String){
+        print("Printing")
+        printImage(uid:uid)
+    } //handlePrintQR
+    
     func doSearchByWIFI()
     {
         // Update the GUI in case we search again using the button
@@ -118,14 +130,194 @@ struct PrintQRModal: View {
         // NOTE: We will update channel only when user selects the one they want to use. c.f. handleRowTap
         
      } // didFinishWIFISearchNotificationReceived
+    
+    // Referenced from https://jeevatamil.medium.com/create-qr-codes-with-swiftui-e3606a103bc2
+    func getCG(text: String) -> CGImage {
+        let data = Data(text.utf8)
+        filter.setValue(data, forKey: "inputMessage")
+        
+        if let outputImage = filter.outputImage {
+            if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+                return cgimg
+            }
+        }
+        
+        return CGImage.self as! CGImage
+    } // getQRCodeDate
+    
+    func printImage(uid:String) -> Void {
+        print("printImage")
+        
+        //*** For QL/PT models, it's possible to detect the currently installed label rather than require user to select from a list.
+        // So, let's demonstrate that here and REPLACE labelSize in PrintSettings.
+        // Do this BEFORE we setup GUI to handle the print job.
+        if self.brotherPrinter.model.isQLModel || self.brotherPrinter.model.isPTModel
+        {
+            // If this fails, it has already set error string to be displayed in GUI.
+            // No reason to continue with printing.
+            if !self.detectQLorPTLabel() {return}
+        }
+
+        //*** update GUI on main thread (i.e. init our @State vars)
+        // DISABLE button presses that activate printing while printing is in progress
+        self.printingInProgress = true
+        // Init for no error (NOTE: showPrintErrorAlert should already be false so don't need to set it and redraw the GUI)
+        self.printErrorAlertMessage = nil
+        
+        // Since we force unwrap below, assure printSettings is not nil
+        // If it is, show error on main thread
+        if self.brotherPrinter.printSettings == nil
+        {
+            self.printErrorAlertMessage = "printImage ERROR: printSettings is nil"
+            self.showPrintErrorAlert = true
+            return
+        }
+
+        //*** do printing in a background thread
+        let queue = DispatchQueue(label: "printImage")
+        
+        queue.async {
+            let cgImage = getCG(text: uid)
+            let imagePrinter = ImagePrintHandler()
+            self.printErrorAlertMessage = imagePrinter.printCGImage(cgimage: cgImage,channel: self.brotherPrinter.channel,
+                                                                    printSettings: self.brotherPrinter.printSettings!)
+            
+            
+            // update GUI on main thread
+            DispatchQueue.main.async {
+                // re-enable print buttons
+                self.printingInProgress = false
+ 
+                // if error, enable the alert
+                if self.printErrorAlertMessage != nil {
+                    self.showPrintErrorAlert = true
+                }
+            }
+            
+        } // queue.async
+        
+        
+    } // printImage
+    
+    // Return code:
+    // * true indicates label was detected successfully. The "labelSize" has been replaced in PrintSettings.
+    // * false indicates it wasn't. The printErrorAlertMessage and showPrintErrorAlert have already been set.
+    func detectQLorPTLabel() -> Bool {
+        
+        //*** Detect the currently installed label for QL or PT printer models, using v3 SDK API.
+
+        // NOTE: If you wish to detect the currently installed paper, iOS SDK actually DOES have an API that is similar to the one
+        // from Android. It is listed in the "BRPtouchPrinter.h" file (i.e. v3 API), but for whatever reason it is NOT documented
+        // in the Manual (SDK TODO). API is called "getLabelInfoStatus". I will demonstrate how to use that API here.
+        //
+        // NOTE: It's ok to "co-mingle" v3 and v4 APIs in same app, since v4 doesn't have 100% same functionality yet.
+        // But, you will need to use the BRPtouchPrinter object to use this getLabelInfoStatus function.
+        // getLabelInfoStatus() requires doing start/endCommunication.
+        //
+        // NOTE: If you want to do this at print-time instead, this will likely be problematic if you have already
+        // successfully done "openChannel" using v4 APIs.
+        // So, you probably will need to do this BEFORE calling "openChannel".
+        // As an ALTERNATIVE approach which uses v4 APIs only, after "openChannel" you can call "getPrinterStatus" and then parse the
+        // StatusResponse by referring to the Raster Command Reference Guide (for your model) available online.
+        // Apparently, if you have the Red/Black label, this will be indicated in one of the "undocumented" bytes.
+
+        var errorString:String? = nil
+        
+        let printer = BRPtouchPrinter()
+        printer.setPrinterName("Brother \(self.brotherPrinter.model.modelName)")
+       
+        //*** Convert v4 SDK channel to v3 SDK method of setting these
+        let channelType =  self.brotherPrinter.channel.channelType
+        let channelInfo = self.brotherPrinter.channel.channelInfo
+        
+        if channelType == .wiFi
+        {
+            printer.setInterface(.WLAN)
+            printer.setIPAddress(channelInfo)
+        }
+        else if channelType == .bluetoothMFi
+        {
+            printer.setInterface(.BLUETOOTH)
+            printer.setupForBluetoothDevice(withSerialNumber: channelInfo)
+
+        }
+        else if channelType == .bluetoothLowEnergy
+        {
+            printer.setInterface(.BLE)
+            printer.setBLEAdvertiseLocalName(channelInfo)
+        }
+        else
+        {
+            errorString = "detectQLorPTLabel: Invalid channelType"
+        }
+        
+        //*** getLabelInfo from printer and convert v3 SDK enum to v4 SDK enum
+        if errorString == nil && printer.startCommunication() == true
+        {
+            let labelInfo:BRPtouchLabelInfoStatus? = printer.getLabelInfoStatus()
+            
+            if labelInfo != nil && self.brotherPrinter.printSettings != nil {
+                
+                //*** Update labelSize in printSettings
+                if self.brotherPrinter.model.isQLModel {
+                    let settings = self.brotherPrinter.printSettings as! BRLMQLPrintSettings
+                    let v4label = SupportedModels.v4QLLabelSizeFromV3LabelIdType(v3labelID: labelInfo!.labelID)
+                    if v4label != nil {
+                        settings.labelSize = v4label!
+                     }
+                    else {
+                        errorString = "detectQLorPTLabel: UNSUPPORTED label detected."
+                    }
+                } // QL
+                else {
+                    let settings = self.brotherPrinter.printSettings as! BRLMPTPrintSettings
+                    let v4label = SupportedModels.v4PTLabelSizeFromV3LabelIdType(v3labelID: labelInfo!.labelID)
+                    if v4label != nil {
+                        settings.labelSize = v4label!
+                    }
+                    else {
+                        errorString = "detectQLorPTLabel: UNSUPPORTED label detected."
+                    }
+                } // PT
+            } // if labelInfo retrived OK
+            else {
+                errorString = "detectQLorPTLabel: ERROR getting labelInfo"
+            }
+            
+            printer.endCommunication()
+            
+        } // if startCommunication
+        else
+        {
+            errorString = "detectQLorPTLabel: startCommunication FAILED."
+        }
+
+        if errorString != nil
+        {
+            print("\(errorString!)")
+            
+            self.printErrorAlertMessage = errorString
+            self.showPrintErrorAlert = true
+            
+            return false
+        }
+        else {
+            print("detectQLorPTLabel: Label detected SUCCESSFULLY!")
+            
+            return true
+        }
+        
+    } //detectQLorPTLabel
 }
+
 
 struct PrintQRModal_Previews: PreviewProvider {
     @State static var ipAddress = "12.34.56.789"
     static var previews: some View {
-        PrintQRModal(showModal: .constant(true), printersToSearch: SupportedModels.getArrayOfAllSupportedWIFIModels(),
+        PrintQRModal(showModal: .constant(true),uid: "", printersToSearch: SupportedModels.getArrayOfAllSupportedWIFIModels(),
                      doSearchOnAppear: true,
                      wifiIPAddress: $ipAddress)
             .environmentObject(BrotherPrinter())
+            .environmentObject(AppSettings())
     }
 }
