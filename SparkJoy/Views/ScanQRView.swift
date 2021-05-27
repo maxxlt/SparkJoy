@@ -13,21 +13,34 @@ struct ScanQRView: View {
     @State private var showQuery: Bool = false
     @State private var query: Item = Item()
     @State var uid: String = "TEST"
+    @State private var errorPresent: Bool = false
     var body: some View {
-        CodeScannerView(codeTypes: [.qr], simulatedData: "921BC6D1-74AA-4C39-AC93-AFA2C1E0FB21", completion: self.handleScan)
+        CodeScannerView(codeTypes: [.qr], completion: self.handleScan)
+            .onChange(of: uid, perform: {newValue in
+                if (errorPresent != true){
+                    print("uid = " + uid);
+                    self.showQuery.toggle()
+                }
+                        })
             .sheet(isPresented: $showQuery, content: {
-//                ItemCardView(item: query)
-                Text(uid)
+                ItemCardView(item: query)
             })
+            .alert(isPresented: $errorPresent){
+                Alert(title: Text("QR Invalid"), message: Text("Couldn't find any item with this QR"), dismissButton: .default(Text("OK")))
+            }
     }
     func handleScan(result: Result<String, CodeScannerView.ScanError>){
         switch result {
         case .success(let code):
-            query = coreDM.getItemByUid(uid: code)[0]
-            print(query.title!)
             uid = code
-            print(uid)
-            self.showQuery.toggle()
+            let items = coreDM.getItemByUid(uid: code)
+            if (items.count != 0){
+                query = items[0]
+            }
+            else {
+                errorPresent.toggle()
+            }
+            
         case .failure( _):
             print("Scanning failed")
         }
