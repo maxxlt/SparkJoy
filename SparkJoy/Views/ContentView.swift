@@ -4,13 +4,15 @@
 //
 //  Created by Max on 5/15/21.
 //
-
+// Referred https://www.hackingwithswift.com/books/ios-swiftui/scanning-qr-codes-with-swiftui for handling the scan
 import SwiftUI
+
 
 struct ContentView: View {
     @EnvironmentObject var coreDM:CoreDataManager
     @State private var categoryIndex = 0;
     @State private var showModal = false;
+    @State private var showScanner = false;
     @State private var items: [Item] = [Item]()
     var categories = ["Clothing", "Gaming", "School", "Work"]
     
@@ -18,7 +20,7 @@ struct ContentView: View {
         UITableView.appearance().backgroundColor = .white // Uses UIColor
         UITableView.appearance().tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
         UITableView.appearance().tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
-    }
+    } //init
     
     var body: some View {
         NavigationView{
@@ -39,16 +41,13 @@ struct ContentView: View {
                             ForEach (items, id: \.self) { item in
                                 NavigationLink(
                                     destination: ItemDetailView(item: item), label: {
-                                                                    ItemCardView(
-                                                                        title: "\(item.title ?? "")",
-                                                                        description: "\(item.desc ?? "")",
-                                                                        location: "\(item.location ?? "")",
-                                                                        value: "\(item.value)")
-                                                                })
+                                        ItemCardView(
+                                            item: item)
+                                    })
                                 
                             }
                         }
-                    }
+                    } //horizontal Card Scrollview
                     .frame(width: UIScreen.main.bounds.width)
                     Button(action:
                             {
@@ -67,21 +66,27 @@ struct ContentView: View {
                                minHeight: 0,
                                maxHeight: 57)
                         .padding()
-                }
-            }
+                } //VStack
+            } //ScrollView
             .onAppear(perform: {
                 items = coreDM.getItemByCategory(category: Int16(categoryIndex))
             })
-            .navigationBarTitle("SparkJoy", displayMode: .inline)
             .toolbar {
+                ToolbarItem(placement: .principal, content: {Text("SparkJoy")})
                 ToolbarItemGroup(placement: .navigationBarTrailing){
-                    Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
-                        Image("qr_icon")
-                    }
+                    NavigationLink(destination: ScanQRView(), label: {Image("qr_icon")})
+//                    Button(action: {
+////                        self.showScanner.toggle()
+//                    }) {
+//                        Image("qr_icon")
+//                    } //Button
+//                    .sheet(isPresented: $showScanner){
+//                        CodeScannerView(codeTypes: [.qr], simulatedData: "921BC6D1-74AA-4C39-AC93-AFA2C1E0FB21", completion: self.handleScan)
+//                    }
                 }
-            }
-        }
-    }
+            } // Toolbar
+        } //NavigationView
+    } //body
     
 }
 

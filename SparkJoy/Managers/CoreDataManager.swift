@@ -51,4 +51,13 @@ class CoreDataManager:ObservableObject {
             return []
         }
     }
+    func getItemByUid(uid: String) -> [Item] {
+        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "uid == %@", uid)
+        do {
+            return try persistentContainer.viewContext.fetch(fetchRequest)
+        } catch {
+            return []
+        }
+    }
 }
