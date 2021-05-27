@@ -14,6 +14,13 @@ struct ItemCardView: View {
     var location = ""
     var value = ""
     
+    init(item: Item){
+        self.title = item.title ?? ""
+        self.description = item.desc ?? ""
+        self.location = item.location ?? ""
+        self.value = String(item.value)
+    }
+    
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 5)
@@ -75,6 +82,7 @@ struct ItemCardView: View {
 
 struct ItemCardView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemCardView()
+        var item = Item()
+        ItemCardView(item: item)
     }
 }

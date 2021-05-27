@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,6 +28,8 @@
 		50B96F1A265EC57A0064F15A /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B96F19265EC57A0064F15A /* AppSettings.swift */; };
 		50B96F1D265EC8B40064F15A /* ImagePrintHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B96F1C265EC8B40064F15A /* ImagePrintHandler.swift */; };
 		50B96F1F265ECD400064F15A /* PrintHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B96F1E265ECD400064F15A /* PrintHandler.swift */; };
+		50B96F22265EEA8F0064F15A /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 50B96F21265EEA8F0064F15A /* CodeScanner */; };
+		50D058DE265F08DC00CA3A2E /* ScanQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D058DD265F08DC00CA3A2E /* ScanQRView.swift */; };
 		50F0EA37265D4ACC00587612 /* ItemModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50F0EA35265D4ACC00587612 /* ItemModel.xcdatamodeld */; };
 		50F0EA3A265D51A400587612 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F0EA39265D51A400587612 /* CoreDataManager.swift */; };
 		50F0EA42265D736700587612 /* NewItemModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F0EA41265D736700587612 /* NewItemModal.swift */; };
@@ -72,6 +74,7 @@
 		50B96F19265EC57A0064F15A /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		50B96F1C265EC8B40064F15A /* ImagePrintHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePrintHandler.swift; sourceTree = "<group>"; };
 		50B96F1E265ECD400064F15A /* PrintHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintHandler.swift; sourceTree = "<group>"; };
+		50D058DD265F08DC00CA3A2E /* ScanQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRView.swift; sourceTree = "<group>"; };
 		50F0EA36265D4ACC00587612 /* ItemModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ItemModel.xcdatamodel; sourceTree = "<group>"; };
 		50F0EA39265D51A400587612 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		50F0EA41265D736700587612 /* NewItemModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemModal.swift; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50B96F22265EEA8F0064F15A /* CodeScanner in Frameworks */,
 				508EC052265335BA0015B9E0 /* BRLMPrinterKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,6 +146,7 @@
 				508EC06B2653616B0015B9E0 /* ItemCardView.swift */,
 				50F0EA41265D736700587612 /* NewItemModal.swift */,
 				50F0EA4A265DC17100587612 /* ItemDetailView.swift */,
+				50D058DD265F08DC00CA3A2E /* ScanQRView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -220,6 +225,9 @@
 			dependencies = (
 			);
 			name = SparkJoy;
+			packageProductDependencies = (
+				50B96F21265EEA8F0064F15A /* CodeScanner */,
+			);
 			productName = SparkJoy;
 			productReference = 505010872650C70700CF3B62 /* SparkJoy.app */;
 			productType = "com.apple.product-type.application";
@@ -247,6 +255,9 @@
 				Base,
 			);
 			mainGroup = 5050107E2650C70700CF3B62;
+			packageReferences = (
+				50B96F20265EEA8F0064F15A /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = 505010882650C70700CF3B62 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -277,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50D058DE265F08DC00CA3A2E /* ScanQRView.swift in Sources */,
 				50B96F1D265EC8B40064F15A /* ImagePrintHandler.swift in Sources */,
 				508EC01F26532CE70015B9E0 /* AppDelegate.swift in Sources */,
 				508EC02626532DBE0015B9E0 /* BrotherPrinter.swift in Sources */,
@@ -423,6 +435,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SparkJoy/Preview Content\"";
+				DEVELOPMENT_TEAM = QV4C435N4G;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -451,6 +464,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SparkJoy/Preview Content\"";
+				DEVELOPMENT_TEAM = QV4C435N4G;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -494,6 +508,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		50B96F20265EEA8F0064F15A /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		50B96F21265EEA8F0064F15A /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50B96F20265EEA8F0064F15A /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		50F0EA35265D4ACC00587612 /* ItemModel.xcdatamodeld */ = {
